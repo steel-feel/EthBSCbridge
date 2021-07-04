@@ -66,4 +66,4 @@ truffle exec ./scripts/eth-bsc-transfer.js
 # Nice feature to be included
 1. _Offline Signing_: Signing of transcation can be done at isolated system (eg A rasberry pi in subnet) and data transmission between then can be done using ZeroMQ Protocol.
 
-2. 
+2. Web UI : Would be great to have a nice UI interaction with bridge.
