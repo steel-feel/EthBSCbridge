@@ -1,7 +1,5 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider'),
-      Web3 = require("web3"),
-      prompt = require('prompt-sync')(),
-      fs = require('fs');
+      helper= require("./scripts/helper");
 /*
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -23,19 +21,13 @@ const HDWalletProvider = require('@truffle/hdwallet-provider'),
  */
 
 //const HDWalletProvider = require('@truffle/hdwallet-provider');
-let passphrase = prompt("Please enter passphrase of account ");
+// let passphrase = prompt("Please enter passphrase of account ");
 
-let web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545/');
 
-const keyStore = fs.readFileSync("./AccountKeyStore.json"),
-owner = web3.eth.accounts.decrypt(JSON.parse(keyStore), passphrase);
-
-if(!owner)
-{
-  console.log("Wrong passphrase. Try again")
-}
-
-const sPrivateKey = owner.privateKey;
+// const keyStore = fs.readFileSync("./AccountKeyStore.json"),
+// owner = web3.eth.accounts.decrypt(JSON.parse(keyStore), passphrase);
+const owner = helper.getWallet(),
+      sPrivateKey = owner.privateKey;
 
 
 module.exports = {

@@ -1,8 +1,9 @@
 const BridgeEth = artifacts.require('./BridgeEth.sol'),
-      TokenEth = artifacts.require("./TokenEth.sol");
+      TokenEth = artifacts.require("./TokenEth.sol"),
+      helper= require("./scripts/helper")
 
-//TODO: hide private key in variable
-const privKey = '0x439af4bf04ef09ebabaf8465e4bbef4cb09abb3b3135400dd465300d5aa2548c';
+      const owner = helper.getWallet(),
+            privKey = owner.privateKey;
 
 module.exports = async done => {
   const nonce = 1; //Need to increment this for each new transfer

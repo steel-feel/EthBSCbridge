@@ -6,11 +6,8 @@ module.exports = async done => {
    console.log(`Eth balance:  ${await web3.eth.getBalance(sender)}`) ;
   const tokenEth = await TokenEth.deployed();
   const balance = await tokenEth.balanceOf(sender);
-  console.log(balance.toString());
+  console.log(`Token balance: ${balance.toString()}`);
 
- 
-  
-  
   done();
 
 

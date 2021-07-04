@@ -8,9 +8,8 @@ module.exports = async done => {
     
  const tokenBsc = await TokenBsc.deployed();
  const balance = await tokenBsc.balanceOf(recipient);
-  console.log(balance.toString());
+ 
+ console.log(`Token balance: ${balance.toString()}`);
 
-
-  
   done();
 }
