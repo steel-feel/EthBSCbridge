@@ -17,7 +17,7 @@ Eth Testnet: Ropsten
 **Create account & Keystore file**
 
 `
-node ./script/create-Account.js
+node ./scripts/create-Account.js
 `
 
 **Command to deploy/migrate contracts**

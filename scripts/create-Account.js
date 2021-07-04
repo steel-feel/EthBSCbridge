@@ -12,7 +12,7 @@ else {
 
 async function createWallet() {
 
-    let passphrase = prompt("Please enter Passphrase for new account \n");
+    let passphrase = prompt("Please enter Passphrase for new account: ");
     if (!passphrase){
         console.error("Please enter valid passpharse and try again...");
         return;
