@@ -37,7 +37,7 @@ contract BridgeBase {
     emit Transfer(
       msg.sender,
       to,
-      amount - 1,
+      amount,
       block.timestamp,
       nonce,
       signature,
