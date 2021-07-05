@@ -10,7 +10,8 @@ module.exports = async done => {
   const accounts = await web3.eth.getAccounts();
   const bridgeEth = await BridgeEth.deployed();
   const tokenEth = await TokenEth.deployed();
-  const amount = 100;
+  const Fees = 1;
+  const amount = 100 + Fees;
   const message = web3.utils.soliditySha3(
     {t: 'address', v: accounts[0]},
     {t: 'address', v: accounts[0]},

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
@@ -30,11 +31,13 @@ contract BridgeBase {
    // token.burn(msg.sender, amount);
     //instead of burning transfer to admin account
     token.transferFrom(to, address(this), amount);
-    
+    uint Fees = 1;
+    amount -= Fees;
+
     emit Transfer(
       msg.sender,
       to,
-      amount,
+      amount - 1,
       block.timestamp,
       nonce,
       signature,
