@@ -7,6 +7,15 @@ import './IToken.sol';
 contract BridgeBase {
   address public admin;
   IToken public token;
+
+  uint private fees;
+
+  function getFees() view external returns(uint){
+    return fees;
+  }
+
+  //TODO: update fees via Bridge logic
+
   mapping(address => mapping(uint => bool)) public processedNonces;
 
   enum Step { Burn, Mint }
@@ -23,6 +32,7 @@ contract BridgeBase {
   constructor(address _token) {
     admin = msg.sender;
     token = IToken(_token);
+    fees = 1;
   }
 
   function burn(address to, uint amount, uint nonce, bytes calldata signature) external {
@@ -30,10 +40,10 @@ contract BridgeBase {
     processedNonces[msg.sender][nonce] = true;
    // token.burn(msg.sender, amount);
     //instead of burning transfer to admin account
-    token.transferFrom(to, address(this), amount);
-    uint Fees = 1;
-    amount -= Fees;
+    uint AmountwithFees = amount + fees;
 
+    token.transferFrom(to, address(this), AmountwithFees);
+  
     emit Transfer(
       msg.sender,
       to,
@@ -58,7 +68,7 @@ contract BridgeBase {
       amount,
       nonce
     )));
-    require(admin == msg.sender, "only admin can call this");
+   // require(admin == msg.sender, "only admin can call this");
     require(recoverSigner(message, signature) == from , 'wrong signature');
     require(processedNonces[from][nonce] == false, 'transfer already processed');
 

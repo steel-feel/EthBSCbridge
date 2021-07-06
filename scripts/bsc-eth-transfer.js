@@ -1,5 +1,5 @@
-const BridgeEth = artifacts.require('./BridgeEth.sol'),
-      TokenEth = artifacts.require("./TokenEth.sol");
+const BridgeBsc = artifacts.require('./BridgeBsc.sol'),
+      TokenBsc = artifacts.require("./TokenBsc.sol");
 
 const helper = require("./helper"); 
 let privKey;
@@ -10,10 +10,10 @@ privKey = owner.privateKey;
 
 module.exports = async done => {
   //TODO: get Nonce from local db (eg: lowDB)
-  const nonce = 5; //Need to increment this for each new transfer
+  const nonce = 6; //Need to increment this for each new transfer
   const accounts = await web3.eth.getAccounts();
-  const bridgeEth = await BridgeEth.deployed();
-  const tokenEth = await TokenEth.deployed();
+  const oBridgeBsc = await BridgeBsc.deployed();
+  const oTokenBsc = await TokenBsc.deployed();
   const amount = 100;
   const message = web3.utils.soliditySha3(
     {t: 'address', v: accounts[0]},
@@ -28,12 +28,10 @@ module.exports = async done => {
   ); 
 
     //get Approval for amount+fees
-  let fees = await bridgeEth.getFees();
-  
-  console.log(fees);
-  
-  await tokenEth.approve(bridgeEth.address, amount+fees);
+  let fees = await oBridgeBsc.getFees();
 
-  await bridgeEth.burn(accounts[0], amount, nonce, signature);
+  await oTokenBsc.approve(oBridgeBsc.address, amount+fees);
+
+  await oBridgeBsc.burn(accounts[0], amount, nonce, signature);
   done();
 }

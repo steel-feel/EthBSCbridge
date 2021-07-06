@@ -8,6 +8,8 @@
   },
   "scripts": {
     "bridge-up": "node ./scripts/eth-bsc-bridge.js",
+    "fromEthToBsc" : "truffle exec ./scripts/eth-bsc-transfer.js",
+    "fromBscToEth" : "truffle exec ./scripts/bsc-eth-transfer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
