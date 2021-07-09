@@ -68,7 +68,7 @@ contract BridgeBase {
       amount,
       nonce
     )));
-   // require(admin == msg.sender, "only admin can call this");
+    require(admin == msg.sender, "only admin can call this");
     require(recoverSigner(message, signature) == from , 'wrong signature');
     require(processedNonces[from][nonce] == false, 'transfer already processed');
 
@@ -80,15 +80,15 @@ contract BridgeBase {
  
     token.transfer(to, amount);
 
-    emit Transfer(
-      from,
-      to,
-      amount,
-      block.timestamp,
-      nonce,
-      signature,
-      Step.Mint
-    );
+    // emit Transfer(
+    //   from,
+    //   to,
+    //   amount,
+    //   block.timestamp,
+    //   nonce,
+    //   signature,
+    //   Step.Mint
+    // );
   }
 
   function prefixed(bytes32 hash) internal pure returns (bytes32) {

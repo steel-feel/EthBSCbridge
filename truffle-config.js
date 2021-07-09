@@ -69,57 +69,25 @@ module.exports = {
       provider: () => new HDWalletProvider(
         {
           privateKeys: [sPrivateKey], 
-          providerOrUrl: 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+          providerOrUrl: 'https://ropsten.infura.io/v3/49c09db3360d4665a9c0fdbd99b11bb8',
           addressIndex: 0
         }
       ),
-      // gas: 8000000,
-      // gasPrice: 200000000000,
+      networkCheckTimeout: 1000000,
       network_id: 3, //rinkeby
-      skipDryRun: true
-    },
-    genache: {
-      provider: () => new HDWalletProvider(
-        {
-          privateKeys: ["2d3b6ddf3b546c1cd1baad151aff07f8a265ba4d8028128119d57a226c89e7dc"], 
-          providerOrUrl: 'http://127.0.0.1:7545',
-          addressIndex: 0
-        }
-      ),
-      // gas: 8000000,
-      // gasPrice: 200000000000,
-      network_id: 5777, //rinkeby
-      skipDryRun: true
-    },
-    skale: {
-      provider: () => new HDWalletProvider(
-        {
-          privateKeys: ["2d3b6ddf3b546c1cd1baad151aff07f8a265ba4d8028128119d57a226c89e7dc"], 
-          providerOrUrl: 'http://127.0.0.1:1234',
-          addressIndex: 0
-        }
-      ),
-      // gas: 8000000,
-      // gasPrice: 200000000000,
-      network_id: 54173, //rinkeby
       skipDryRun: true
     },
     bscTestnet: {
       provider: () => new HDWalletProvider(
         {
           privateKeys: [sPrivateKey], 
-          providerOrUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545'
+          providerOrUrl: 'https://data-seed-prebsc-1-s3.binance.org:8545/'
         }
       ),
       network_id: 97,
       skipDryRun: true
     },
-    // Useful for private networks
-    // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+
   },
 
   // Set default mocha options here, use special reporters etc.

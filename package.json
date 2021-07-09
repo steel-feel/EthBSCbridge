@@ -7,9 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "bridge-up": "node ./scripts/eth-bsc-bridge.js",
-    "fromEthToBsc" : "truffle exec ./scripts/eth-bsc-transfer.js",
-    "fromBscToEth" : "truffle exec ./scripts/bsc-eth-transfer.js",
+    "ebridge": "node ./scripts/eth-bsc-bridge.js",
+    "bbridge": "node ./scripts/bsc-eth-bridge.js",
+    "fromEthToBsc": "truffle exec ./scripts/eth-bsc-transfer.js --network ropsten",
+    "fromBscToEth": "truffle exec ./scripts/bsc-eth-transfer.js --network bscTestnet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "@openzeppelin/contracts": "^4.0.0-beta.0",
     "@truffle/hdwallet-provider": "^1.2.3",
     "prompt-sync": "^4.2.0",
+    "stormdb": "^0.5.1",
     "web3": "^1.3.4"
   }
 }

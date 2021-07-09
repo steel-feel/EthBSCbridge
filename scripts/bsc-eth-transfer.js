@@ -1,7 +1,7 @@
 const BridgeBsc = artifacts.require('./BridgeBsc.sol'),
       TokenBsc = artifacts.require("./TokenBsc.sol");
-
-const helper = require("./helper"); 
+const {db} = require("./dbhelper.js"),
+      helper = require("./helper"); 
 let privKey;
 
 const owner = helper.getWallet("./../AccountKeyStore.json");
@@ -9,12 +9,11 @@ const owner = helper.getWallet("./../AccountKeyStore.json");
 privKey = owner.privateKey;
 
 module.exports = async done => {
-  //TODO: get Nonce from local db (eg: lowDB)
-  const nonce = 6; //Need to increment this for each new transfer
+  const nonce = db.get("nonce").value(); 
   const accounts = await web3.eth.getAccounts();
   const oBridgeBsc = await BridgeBsc.deployed();
   const oTokenBsc = await TokenBsc.deployed();
-  const amount = 100;
+  const amount = 80;
   const message = web3.utils.soliditySha3(
     {t: 'address', v: accounts[0]},
     {t: 'address', v: accounts[0]},
@@ -33,5 +32,8 @@ module.exports = async done => {
   await oTokenBsc.approve(oBridgeBsc.address, amount+fees);
 
   await oBridgeBsc.burn(accounts[0], amount, nonce, signature);
+  
+  db.set("nonce", nonce + 1).save();
+
   done();
 }

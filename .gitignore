@@ -2,3 +2,4 @@
 
 AccountKeyStore.json
 /build/
+*.stormdb
