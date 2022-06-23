@@ -44,10 +44,18 @@ truffle exec ./scripts/eth-token-balance.js --network ropsten
 truffle exec ./scripts/bsc-token-balance.js --network bscTestnet
 `
 
-**Boot up bridge**
+**Boot up bridges**
 
+Run below commands in different console windows
+
+BSC test net bridge
 `
-npm run bridge-up
+npm run bbridge
+`
+
+BSC Ropsten bridge
+`
+npm run ebridge
 `
 
 **Transfer amount from Ropsten to BSC (fixed to 100)**
