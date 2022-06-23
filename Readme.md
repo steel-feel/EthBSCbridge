@@ -10,7 +10,7 @@ node
 
 Eth Testnet: Ropsten
 
-> Can do local testing between any two chains, this project  has configuration for skale(local) & Ganache.
+> Can do testing between any two chains as well
 
 ### Basic commands
 
@@ -53,7 +53,7 @@ BSC test net bridge
 npm run bbridge
 `
 
-BSC Ropsten bridge
+Ethereum Ropsten bridge
 `
 npm run ebridge
 `
@@ -61,7 +61,7 @@ npm run ebridge
 **Transfer amount from Ropsten to BSC (fixed to 100)**
 
 `
-truffle exec ./scripts/eth-bsc-transfer.js
+npm run fromEthToBsc
 `
 
 ### Steps for testing
